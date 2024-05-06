@@ -8,7 +8,7 @@ public class AnimationPanel extends JPanel {
     public void paintComponent(Graphics g){
         super.paintComponent(g);
 
-        g.drawLine(0,50,100,100);
+        g.drawLine(540,0,540,540);
     }
 
     // Constructor  
