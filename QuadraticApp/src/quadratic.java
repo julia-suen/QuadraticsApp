@@ -2,6 +2,9 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+// To create jar file, type the following in terminal
+// jar --verbose --create --file jarexample.jar --main-class=keyboardmouse AnimationPanel.class keyboardmouse.class homer.png
+
 public class quadratic implements ActionListener{
     // Properties
     JFrame theframe = new JFrame("Quadratic");
@@ -18,6 +21,7 @@ public class quadratic implements ActionListener{
     JLabel klabel;
     JSlider hslider;
     JSlider kslider;
+    JButton butconfirm;
 
     // Methods
     public void actionPerformed(ActionEvent evt){
@@ -70,6 +74,11 @@ public class quadratic implements ActionListener{
         kslider.setLocation(600,270);
         thepanel.add(kslider);
 
+        butconfirm = new JButton("Confirm & run animation");
+        butconfirm.setSize(300,30);
+        butconfirm.setLocation(600, 340);
+        thepanel.add(butconfirm);
+
         theframe.setContentPane(thepanel);
         theframe.pack();
         theframe.setResizable(false);
@@ -79,7 +88,6 @@ public class quadratic implements ActionListener{
 
     // Main Program
     public static void main(String[] args){
-        // System.out.println("Hello world");
         new quadratic();
     }
 }
