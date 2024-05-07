@@ -14,7 +14,11 @@ public class AnimationPanel extends JPanel {
         super.paintComponent(g);
 
         g.drawImage(imgGrid, 0, 0, null);
-        g.drawImage(imgCurve, 0, -231, null);
+        // Covering up watermark
+        g.setColor(Color.WHITE);
+        g.fillRect(0, 520, 540, 540);
+        // y level at -231 is the origin on the graph
+        g.drawImage(imgCurve, 0, 100, null);
         g.drawLine(540,0,540,540);
     }
 
