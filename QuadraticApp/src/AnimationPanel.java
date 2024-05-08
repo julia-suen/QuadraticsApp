@@ -17,7 +17,8 @@ public class AnimationPanel extends JPanel {
         // Covering up watermark
         g.setColor(Color.WHITE);
         g.fillRect(0, 520, 540, 540);
-        // y level at -231 is the origin on the graph
+        // x = 0 and y level at -231 is the origin on the graph (Default value)
+        // around 23 to 24 pixels for x or y to move 1 horizontal or vertical
         g.drawImage(imgCurve, 0, -231, null);
         g.drawLine(540,0,540,540);
     }
