@@ -1,11 +1,19 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import javax.swing.event.*;
+
 
 // To create jar file, type the following in terminal
 // jar --verbose --create --file jarexample.jar --main-class=keyboardmouse AnimationPanel.class keyboardmouse.class homer.png
+// Create sub directory called "javadocs"
+// javadoc ../AnimationPanel.java
+// javadoc ../keyboardmouse.java
+// javadoc ../*.java
+// for every method and property, comment (before the actual method) with /** comments */
+// setContentPane.validate 
 
-public class quadratic implements ActionListener{
+public class quadratic implements ActionListener, ChangeListener{
     // Properties
     JFrame theframe = new JFrame("Quadratic");
     AnimationPanel thepanel = new AnimationPanel();
@@ -22,28 +30,80 @@ public class quadratic implements ActionListener{
     JLabel klabel;
     JSlider hslider;
     JSlider kslider;
+    JTextField hvalue;
+    JTextField kvalue;
     JButton butconfirm;
+    JLabel transformation1;
+    JLabel transformation2;
+	public int intA = 1;
+	public int intH = 0;
+	public int intK = 0;
 
     // Methods
     public void actionPerformed(ActionEvent evt){
         
+        //if(evt.getSource() == butconfirm){
+			//System.out.println("Confirmed");
+			
+		if(evt.getSource() == aneg1){
+			intA = -1;
+			System.out.println(intA);
+			//printTransformation(intA, intH, intK);
+			//transformation.setText("intA");
+		}
+		
+		if(evt.getSource() == hvalue){
+			try{
+				intH = Integer.parseInt(hvalue.getText());
+				hslider.setValue(intH);
+				//System.out.println(intH);
+				//transformation.setText("intA");
+				//printTransformation(intA, intH, intK);
+			}catch(NumberFormatException e){
+				hvalue.setText("0");
+				hslider.setValue(0);
+			}
+		}
+		
+		if(evt.getSource() == kvalue){
+			try{
+				intK = Integer.parseInt(kvalue.getText());
+				kslider.setValue(intK);
+				//transformation.setText("intA");
+				//printTransformation(intA, intH, intK);
+			}catch(NumberFormatException e){
+				kvalue.setText("0");
+				kslider.setValue(0);
+			}
+		}
+		
+		//}
     }
+
+	public void stateChanged(ChangeEvent evt){
+		if(evt.getSource() == hslider){
+			hvalue.setText(hslider.getValue()+"");
+			intH = hslider.getValue();
+			System.out.println(intH);
+		}
+		
+		if(evt.getSource() == kslider){
+			kvalue.setText(kslider.getValue()+"");
+		}
+	}
 
     // Constructor
     public quadratic(){
         thepanel.setPreferredSize(new Dimension(960,540));
 		thepanel.setLayout(null);
 		
-		// Change Icon of the app
-		theframe.setIconImage(imgIcon.getImage()); 
-		
 		themenubar.add(mainmenu);
 		themenubar.add(helpmenu);
 		themenubar.add(aboutmenu);
 		theframe.setJMenuBar(themenubar);
 
-        formulalabel = new JLabel("<html> f(x) = a(x-h)<sup>2</sup> + k </html>");
-        formulalabel.setFont(new Font("Calibri", Font.PLAIN, 30));
+        formulalabel = new JLabel("<html> f(x) = a(x - h)<sup>2</sup> + k </html>");
+        formulalabel.setFont(new Font("Calibri", Font.PLAIN, 24));
         formulalabel.setSize(200,100);
         formulalabel.setLocation(650,5);
         thepanel.add(formulalabel);
@@ -66,6 +126,9 @@ public class quadratic implements ActionListener{
         hslider = new JSlider(-10,10,0);
         hslider.setSize(300,50);
         hslider.setLocation(600,200);
+        hslider.addChangeListener(this);
+        hslider.setSnapToTicks(true);
+        hslider.setPaintLabels(true);
         thepanel.add(hslider);
 
         klabel = new JLabel("k");
@@ -76,12 +139,40 @@ public class quadratic implements ActionListener{
         kslider = new JSlider(-10,10,0);
         kslider.setSize(300,50);
         kslider.setLocation(600,270);
+        kslider.addChangeListener(this);
         thepanel.add(kslider);
 
+		hvalue = new JTextField("0");
+		hvalue.setSize(30,20);
+		hvalue.setLocation(650,180);
+		hvalue.addActionListener(this);
+		thepanel.add(hvalue);
+		
+		kvalue = new JTextField("0");
+		kvalue.setSize(30,20);
+		kvalue.setLocation(650,250);
+		kvalue.addActionListener(this);
+		thepanel.add(kvalue);
+		
+		/*
         butconfirm = new JButton("Confirm & run animation");
         butconfirm.setSize(300,30);
         butconfirm.setLocation(600, 340);
+        butconfirm.addActionListener(this);
         thepanel.add(butconfirm);
+
+        */
+		transformation1 = new JLabel("f(x) = a(x -  ");
+        transformation1.setFont(new Font("Calibri", Font.PLAIN, 24));
+		transformation1.setSize(300,200);
+		transformation1.setLocation(600,250);
+		thepanel.add(transformation1);
+		
+        transformation2 = new JLabel("<html> )<sup>2</sup> +     </html>");
+        transformation2.setFont(new Font("Calibri", Font.PLAIN, 24));
+		transformation2.setSize(300,200);
+		transformation2.setLocation(750,238);
+		thepanel.add(transformation2);
 
         theframe.setContentPane(thepanel);
         theframe.pack();
