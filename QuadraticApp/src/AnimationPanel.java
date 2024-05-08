@@ -18,7 +18,7 @@ public class AnimationPanel extends JPanel {
         g.setColor(Color.WHITE);
         g.fillRect(0, 520, 540, 540);
         // y level at -231 is the origin on the graph
-        g.drawImage(imgCurve, 0, 100, null);
+        g.drawImage(imgCurve, 0, -231, null);
         g.drawLine(540,0,540,540);
     }
 

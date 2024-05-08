@@ -10,6 +10,7 @@ public class quadratic implements ActionListener{
     JFrame theframe = new JFrame("Quadratic");
     AnimationPanel thepanel = new AnimationPanel();
     Timer thetimer = new Timer(1000/48, this);
+    ImageIcon imgIcon = new ImageIcon("Images/mathicon.png");
 	JMenuBar themenubar = new JMenuBar();
 	JMenu mainmenu = new JMenu("Main");
 	JMenu helpmenu = new JMenu("Help");
@@ -32,6 +33,9 @@ public class quadratic implements ActionListener{
     public quadratic(){
         thepanel.setPreferredSize(new Dimension(960,540));
 		thepanel.setLayout(null);
+		
+		// Change Icon of the app
+		theframe.setIconImage(imgIcon.getImage()); 
 		
 		themenubar.add(mainmenu);
 		themenubar.add(helpmenu);
