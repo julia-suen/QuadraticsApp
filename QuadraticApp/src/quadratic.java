@@ -32,9 +32,11 @@ public class quadratic implements ActionListener, ChangeListener{
     JSlider kslider;
     JTextField hvalue;
     JTextField kvalue;
-    JButton butconfirm;
+    //JButton butconfirm;
     JLabel transformation1;
     JLabel transformation2;
+    JLabel htrans;
+    JLabel ktrans;
 	public int intA = 1;
 	public int intH = 0;
 	public int intK = 0;
@@ -44,14 +46,16 @@ public class quadratic implements ActionListener, ChangeListener{
         
         //if(evt.getSource() == butconfirm){
 			//System.out.println("Confirmed");
-			
+		/*
 		if(evt.getSource() == aneg1){
 			intA = -1;
 			System.out.println(intA);
+            thepanel.intA = this.intA;
 			//printTransformation(intA, intH, intK);
 			//transformation.setText("intA");
 		}
-		
+		*/
+
 		if(evt.getSource() == hvalue){
 			try{
 				intH = Integer.parseInt(hvalue.getText());
@@ -84,11 +88,26 @@ public class quadratic implements ActionListener, ChangeListener{
 		if(evt.getSource() == hslider){
 			hvalue.setText(hslider.getValue()+"");
 			intH = hslider.getValue();
-			System.out.println(intH);
+            thepanel.intH = this.intH;
+
+            if(this.intH < 0){
+                htrans.setText("+"+this.intH*-1);
+            }else{
+                htrans.setText("-"+this.intH);
+            }
+			// System.out.println(intH);
 		}
 		
 		if(evt.getSource() == kslider){
 			kvalue.setText(kslider.getValue()+"");
+            intK = kslider.getValue();
+            thepanel.intK = this.intK;
+
+            if(this.intK >= 0){
+                ktrans.setText("+"+this.intK);
+            }else{
+                ktrans.setText("-"+this.intK*-1);
+            }
 		}
 	}
 
@@ -101,6 +120,8 @@ public class quadratic implements ActionListener, ChangeListener{
 		themenubar.add(helpmenu);
 		themenubar.add(aboutmenu);
 		theframe.setJMenuBar(themenubar);
+
+        theframe.setIconImage(imgIcon.getImage());
 
         formulalabel = new JLabel("<html> f(x) = a(x - h)<sup>2</sup> + k </html>");
         formulalabel.setFont(new Font("Calibri", Font.PLAIN, 24));
@@ -160,19 +181,31 @@ public class quadratic implements ActionListener, ChangeListener{
         butconfirm.setLocation(600, 340);
         butconfirm.addActionListener(this);
         thepanel.add(butconfirm);
-
         */
-		transformation1 = new JLabel("f(x) = a(x -  ");
+		
+        transformation1 = new JLabel("f(x) = a(x   ");
         transformation1.setFont(new Font("Calibri", Font.PLAIN, 24));
 		transformation1.setSize(300,200);
 		transformation1.setLocation(600,250);
 		thepanel.add(transformation1);
 		
-        transformation2 = new JLabel("<html> )<sup>2</sup> +     </html>");
+        transformation2 = new JLabel("<html> )<sup>2</sup></html>");
         transformation2.setFont(new Font("Calibri", Font.PLAIN, 24));
 		transformation2.setSize(300,200);
-		transformation2.setLocation(750,238);
+		transformation2.setLocation(725,238);
 		thepanel.add(transformation2);
+
+        htrans = new JLabel("-h");
+        htrans.setFont(new Font("Calibri", Font.PLAIN, 24));
+		htrans.setSize(300,200);
+		htrans.setLocation(690,250);
+		thepanel.add(htrans);
+
+        ktrans = new JLabel("+k");
+        ktrans.setFont(new Font("Calibri", Font.PLAIN, 24));
+		ktrans.setSize(300,200);
+		ktrans.setLocation(745,250);
+		thepanel.add(ktrans);
 
         theframe.setContentPane(thepanel);
         theframe.pack();
