@@ -13,14 +13,17 @@ import javax.swing.event.*;
 // for every method and property, comment (before the actual method) with /** comments */
 // setContentPane.validate 
 
-public class quadratic implements ActionListener, ChangeListener{
+public class quadratic implements ActionListener, ChangeListener, MenuListener{
     // Properties
     JFrame theframe = new JFrame("Quadratic");
     AnimationPanel thepanel = new AnimationPanel();
+    QuizPanel quizpanel = new QuizPanel();
+    JPanel helppanel = new JPanel();
     Timer thetimer = new Timer(1000/48, this);
     ImageIcon imgIcon = new ImageIcon("Images/mathicon.png");
 	JMenuBar themenubar = new JMenuBar();
 	JMenu mainmenu = new JMenu("Main");
+	JMenu quizmenu = new JMenu("Quiz");
 	JMenu helpmenu = new JMenu("Help");
 	JMenu aboutmenu = new JMenu("About");
 	JLabel formulalabel;
@@ -35,6 +38,8 @@ public class quadratic implements ActionListener, ChangeListener{
     //JButton butconfirm;
     JLabel transformation1;
     JLabel transformation2;
+    JLabel transformation3;
+    JLabel atrans;
     JLabel htrans;
     JLabel ktrans;
 	public int intA = 1;
@@ -43,23 +48,18 @@ public class quadratic implements ActionListener, ChangeListener{
 
     // Methods
     public void actionPerformed(ActionEvent evt){
-        /*
-        if(evt.getSource() == butconfirm){
-			System.out.println("Confirmed");
-		*/
 		if(evt.getSource() == apos1){
 			intA = 1;
 			//System.out.println(intA);
             thepanel.intA = this.intA;
-			//printTransformation(intA, intH, intK);
-			//transformation.setText("intA");
+            atrans.setText("");
 		}
+
 		if(evt.getSource() == aneg1){
 			intA = -1;
 			//System.out.println(intA);
             thepanel.intA = this.intA;
-			//printTransformation(intA, intH, intK);
-			//transformation.setText("intA");
+            atrans.setText("-");
 		}
 
 		if(evt.getSource() == hvalue){
@@ -67,9 +67,6 @@ public class quadratic implements ActionListener, ChangeListener{
 				intH = Integer.parseInt(hvalue.getText());
 				hslider.setValue(intH);
 				//System.out.println(intH);
-				//System.out.println(intH);
-				//transformation.setText("intA");
-				//printTransformation(intA, intH, intK);
 			}catch(NumberFormatException e){
 				hvalue.setText("0");
 				hslider.setValue(0);
@@ -81,8 +78,6 @@ public class quadratic implements ActionListener, ChangeListener{
 				intK = Integer.parseInt(kvalue.getText());
 				kslider.setValue(intK);
 				//System.out.println(intK);
-				//transformation.setText("intA");
-				//printTransformation(intA, intH, intK);
 			}catch(NumberFormatException e){
 				kvalue.setText("0");
 				kslider.setValue(0);
@@ -101,7 +96,7 @@ public class quadratic implements ActionListener, ChangeListener{
             }else{
                 htrans.setText("-"+this.intH);
             }
-			// System.out.println(intH);
+			//System.out.println(intH);
 		}
 		
 		if(evt.getSource() == kslider){
@@ -116,17 +111,48 @@ public class quadratic implements ActionListener, ChangeListener{
             }
 		}
 	}
+	
+	public void menuCanceled(MenuEvent evt){
+		
+	}
+	
+	public void menuDeselected(MenuEvent evt){
+		
+	}
+	
+	public void menuSelected(MenuEvent evt){
+		if(evt.getSource() == mainmenu){
+			theframe.setContentPane(thepanel);
+			theframe.pack();
+			theframe.repaint();
+		}else if(evt.getSource() == helpmenu){
+			theframe.setContentPane(helppanel);
+			theframe.pack();
+			theframe.repaint();
+		}else if(evt.getSource() == quizmenu){
+			theframe.setContentPane(quizpanel);
+			theframe.pack();
+			theframe.repaint();
+		}
+	}
 
     // Constructor
     public quadratic(){
+        // Main Panel
         thepanel.setPreferredSize(new Dimension(960,540));
 		thepanel.setLayout(null);
 		
 		themenubar.add(mainmenu);
 		themenubar.add(helpmenu);
 		themenubar.add(aboutmenu);
+		themenubar.add(quizmenu);
 		theframe.setJMenuBar(themenubar);
 
+		mainmenu.addMenuListener(this);
+		helpmenu.addMenuListener(this);
+		quizmenu.addMenuListener(this);
+		aboutmenu.addMenuListener(this);
+		
         formulalabel = new JLabel("<html> f(x) = a(x - h)<sup>2</sup> + k </html>");
         formulalabel.setFont(new Font("Calibri", Font.PLAIN, 24));
         formulalabel.setSize(200,100);
@@ -181,15 +207,7 @@ public class quadratic implements ActionListener, ChangeListener{
 		kvalue.addActionListener(this);
 		thepanel.add(kvalue);
 		
-		/*
-        butconfirm = new JButton("Confirm & run animation");
-        butconfirm.setSize(300,30);
-        butconfirm.setLocation(600, 340);
-        butconfirm.addActionListener(this);
-        thepanel.add(butconfirm);
-        */
-		
-        transformation1 = new JLabel("f(x) = a(x   ");
+        transformation1 = new JLabel("f(x) = ");
         transformation1.setFont(new Font("Calibri", Font.PLAIN, 24));
 		transformation1.setSize(300,200);
 		transformation1.setLocation(600,250);
@@ -200,6 +218,18 @@ public class quadratic implements ActionListener, ChangeListener{
 		transformation2.setSize(300,200);
 		transformation2.setLocation(725,238);
 		thepanel.add(transformation2);
+        
+        transformation3 = new JLabel("(x   ");
+        transformation3.setFont(new Font("Calibri", Font.PLAIN, 24));
+		transformation3.setSize(300,200);
+		transformation3.setLocation(670,250);
+		thepanel.add(transformation3);
+
+        atrans = new JLabel("a");
+        atrans.setFont(new Font("Calibri", Font.PLAIN, 24));
+		atrans.setSize(300,200);
+		atrans.setLocation(655,250);
+		thepanel.add(atrans);
 
         htrans = new JLabel("-h");
         htrans.setFont(new Font("Calibri", Font.PLAIN, 24));
@@ -221,6 +251,14 @@ public class quadratic implements ActionListener, ChangeListener{
         theframe.setLocationRelativeTo(null);
         theframe.setVisible(true);
         thetimer.start();
+        
+        // Quiz Panel
+        quizpanel.setPreferredSize(new Dimension(960,540));
+		quizpanel.setLayout(null);
+		
+		// Help Panel
+		
+		// About Panel
     }   
 
     // Main Program
