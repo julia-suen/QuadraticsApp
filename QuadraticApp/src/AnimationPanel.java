@@ -36,13 +36,15 @@ public class AnimationPanel extends JPanel {
     public AnimationPanel(){
         super();
         try{
-            imgGrid = ImageIO.read(new File("Images/grid.png"));
+            imgGrid = ImageIO.read(getClass().getResourceAsStream("/Images/grid.png"));
+            //imgGrid = ImageIO.read(new File("/Images/grid.png"));
         }catch(IOException e){
             System.out.println("Unable to load image");
             System.out.println(e.toString());
         }
         try {
-            imgCurve = ImageIO.read(new File("Images/parabola.png"));
+            imgCurve = ImageIO.read(getClass().getResource("/Images/parabola.png"));
+            //imgCurve = ImageIO.read(new File("/Images/parabola.png"));
         } catch (IOException e) {
             System.out.println("Unable to load image");
             System.out.println(e.toString());
