@@ -43,10 +43,18 @@ public class quadratic implements ActionListener, ChangeListener{
 
     // Methods
     public void actionPerformed(ActionEvent evt){
-        
-        //if(evt.getSource() == butconfirm){
-			//System.out.println("Confirmed");
-		/*
+        /*
+        if(evt.getSource() == butconfirm){
+			System.out.println("Confirmed");
+		*/
+		//
+		if(evt.getSource() == apos1){
+			intA = 1;
+			System.out.println(intA);
+            thepanel.intA = this.intA;
+			//printTransformation(intA, intH, intK);
+			//transformation.setText("intA");
+		}
 		if(evt.getSource() == aneg1){
 			intA = -1;
 			System.out.println(intA);
@@ -54,12 +62,13 @@ public class quadratic implements ActionListener, ChangeListener{
 			//printTransformation(intA, intH, intK);
 			//transformation.setText("intA");
 		}
-		*/
+		//
 
 		if(evt.getSource() == hvalue){
 			try{
 				intH = Integer.parseInt(hvalue.getText());
 				hslider.setValue(intH);
+				//System.out.println(intH);
 				//System.out.println(intH);
 				//transformation.setText("intA");
 				//printTransformation(intA, intH, intK);
@@ -73,6 +82,7 @@ public class quadratic implements ActionListener, ChangeListener{
 			try{
 				intK = Integer.parseInt(kvalue.getText());
 				kslider.setValue(intK);
+				//System.out.println(intK);
 				//transformation.setText("intA");
 				//printTransformation(intA, intH, intK);
 			}catch(NumberFormatException e){
@@ -121,8 +131,6 @@ public class quadratic implements ActionListener, ChangeListener{
 		themenubar.add(aboutmenu);
 		theframe.setJMenuBar(themenubar);
 
-        theframe.setIconImage(imgIcon.getImage());
-
         formulalabel = new JLabel("<html> f(x) = a(x - h)<sup>2</sup> + k </html>");
         formulalabel.setFont(new Font("Calibri", Font.PLAIN, 24));
         formulalabel.setSize(200,100);
@@ -132,11 +140,13 @@ public class quadratic implements ActionListener, ChangeListener{
         apos1 = new JButton("a = 1");
         apos1.setSize(100,30);
         apos1.setLocation(600, 120);
+        apos1.addActionListener(this);
         thepanel.add(apos1);
 
         aneg1 = new JButton("a = -1");
         aneg1.setSize(100,30);
         aneg1.setLocation(800, 120);
+        aneg1.addActionListener(this);
         thepanel.add(aneg1);
 
         hlabel = new JLabel("h");
@@ -211,7 +221,10 @@ public class quadratic implements ActionListener, ChangeListener{
         theframe.pack();
         theframe.setResizable(false);
         theframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        theframe.setIconImage(imgIcon.getImage());
+        theframe.setLocationRelativeTo(null);
         theframe.setVisible(true);
+        thetimer.start();
     }   
 
     // Main Program
