@@ -47,22 +47,20 @@ public class quadratic implements ActionListener, ChangeListener{
         if(evt.getSource() == butconfirm){
 			System.out.println("Confirmed");
 		*/
-		//
 		if(evt.getSource() == apos1){
 			intA = 1;
-			System.out.println(intA);
+			//System.out.println(intA);
             thepanel.intA = this.intA;
 			//printTransformation(intA, intH, intK);
 			//transformation.setText("intA");
 		}
 		if(evt.getSource() == aneg1){
 			intA = -1;
-			System.out.println(intA);
+			//System.out.println(intA);
             thepanel.intA = this.intA;
 			//printTransformation(intA, intH, intK);
 			//transformation.setText("intA");
 		}
-		//
 
 		if(evt.getSource() == hvalue){
 			try{
@@ -90,8 +88,6 @@ public class quadratic implements ActionListener, ChangeListener{
 				kslider.setValue(0);
 			}
 		}
-		
-		//}
     }
 
 	public void stateChanged(ChangeEvent evt){
