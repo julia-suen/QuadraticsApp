@@ -83,6 +83,10 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
 				kslider.setValue(0);
 			}
 		}
+		
+		if(evt.getSource() == thetimer){
+			
+		}
     }
 
 	public void stateChanged(ChangeEvent evt){
