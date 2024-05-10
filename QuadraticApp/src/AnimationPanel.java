@@ -43,7 +43,7 @@ public class AnimationPanel extends JPanel {
             System.out.println(e.toString());
         }
         try {
-            imgCurve = ImageIO.read(getClass().getResource("/Images/parabola.png"));
+            imgCurve = ImageIO.read(getClass().getResourceAsStream("/Images/parabola.png"));
             //imgCurve = ImageIO.read(new File("/Images/parabola.png"));
         } catch (IOException e) {
             System.out.println("Unable to load image");
