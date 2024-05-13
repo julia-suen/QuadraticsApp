@@ -13,17 +13,20 @@ import javax.swing.event.*;
 // for every method and property, comment (before the actual method) with /** comments */
 // setContentPane.validate 
 
+// zip the folder that contains source file, images, jar file, javadocs to submit
+
 public class quadratic implements ActionListener, ChangeListener, MenuListener{
     // Properties
     JFrame theframe = new JFrame("Quadratic");
     AnimationPanel thepanel = new AnimationPanel();
-    QuizPanel quizpanel = new QuizPanel();
+    JPanel quizpanel = new JPanel();
     JPanel helppanel = new JPanel();
+    JPanel aboutpanel = new JPanel();
     Timer thetimer = new Timer(1000/48, this);
     ImageIcon imgIcon = new ImageIcon("Images/mathicon.png");
 	JMenuBar themenubar = new JMenuBar();
 	JMenu mainmenu = new JMenu("Main");
-	JMenu quizmenu = new JMenu("Quiz");
+    JMenu quizmenu = new JMenu("Quiz");
 	JMenu helpmenu = new JMenu("Help");
 	JMenu aboutmenu = new JMenu("About");
 	JLabel formulalabel;
@@ -35,7 +38,6 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
     JSlider kslider;
     JTextField hvalue;
     JTextField kvalue;
-    //JButton butconfirm;
     JLabel transformation1;
     JLabel transformation2;
     JLabel transformation3;
@@ -45,6 +47,13 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
 	public int intA = 1;
 	public int intH = 0;
 	public int intK = 0;
+
+
+    // Quiz Panel JComponents
+    JLabel Q1Label;
+    
+
+
 
     // Methods
     public void actionPerformed(ActionEvent evt){
@@ -83,11 +92,12 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
 				kslider.setValue(0);
 			}
 		}
-		
-		if(evt.getSource() == thetimer){
-			
-		}
+
+        if(evt.getSource() == thetimer){
+
+        }
     }
+
 
 	public void stateChanged(ChangeEvent evt){
 		if(evt.getSource() == hslider){
@@ -115,8 +125,8 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
             }
 		}
 	}
-	
-	public void menuCanceled(MenuEvent evt){
+
+    public void menuCanceled(MenuEvent evt){
 		
 	}
 	
@@ -147,16 +157,16 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
 		thepanel.setLayout(null);
 		
 		themenubar.add(mainmenu);
+        themenubar.add(quizmenu);
 		themenubar.add(helpmenu);
 		themenubar.add(aboutmenu);
-		themenubar.add(quizmenu);
 		theframe.setJMenuBar(themenubar);
 
-		mainmenu.addMenuListener(this);
+        mainmenu.addMenuListener(this);
 		helpmenu.addMenuListener(this);
 		quizmenu.addMenuListener(this);
 		aboutmenu.addMenuListener(this);
-		
+
         formulalabel = new JLabel("<html> f(x) = a(x - h)<sup>2</sup> + k </html>");
         formulalabel.setFont(new Font("Calibri", Font.PLAIN, 24));
         formulalabel.setSize(200,100);
@@ -211,6 +221,7 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
 		kvalue.addActionListener(this);
 		thepanel.add(kvalue);
 		
+		
         transformation1 = new JLabel("f(x) = ");
         transformation1.setFont(new Font("Calibri", Font.PLAIN, 24));
 		transformation1.setSize(300,200);
@@ -223,7 +234,7 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
 		transformation2.setLocation(725,238);
 		thepanel.add(transformation2);
         
-        transformation3 = new JLabel("(x   ");
+        transformation3 = new JLabel("(x");
         transformation3.setFont(new Font("Calibri", Font.PLAIN, 24));
 		transformation3.setSize(300,200);
 		transformation3.setLocation(670,250);
@@ -247,6 +258,23 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
 		ktrans.setLocation(745,250);
 		thepanel.add(ktrans);
 
+        // Quiz Panel
+        quizpanel.setPreferredSize(new Dimension(960,540));
+		quizpanel.setLayout(null);
+		
+        Q1Label = new JLabel("Question 1");
+        Q1Label.setSize(300,200);
+        Q1Label.setLocation(30,20);
+        quizpanel.add(Q1Label);
+        
+		// Help Panel
+		helppanel.setPreferredSize(new Dimension(960,540));
+        helppanel.setLayout(null);
+
+		// About Panel
+        aboutpanel.setPreferredSize(new Dimension(960,540));
+        aboutpanel.setLayout(null);
+
         theframe.setContentPane(thepanel);
         theframe.pack();
         theframe.setResizable(false);
@@ -255,14 +283,6 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
         theframe.setLocationRelativeTo(null);
         theframe.setVisible(true);
         thetimer.start();
-        
-        // Quiz Panel
-        quizpanel.setPreferredSize(new Dimension(960,540));
-		quizpanel.setLayout(null);
-		
-		// Help Panel
-		
-		// About Panel
     }   
 
     // Main Program
