@@ -17,7 +17,7 @@ import javax.swing.event.*;
 
 public class quadratic implements ActionListener, ChangeListener, MenuListener{
     // Properties
-    /** main  */
+    /** Main Panel JComponents */
     JFrame theframe = new JFrame("Quadratic in Vertex Form");
     AnimationPanel thepanel = new AnimationPanel();
     JPanel quiz1panel = new JPanel();
@@ -85,7 +85,7 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
     JLabel WrongLabel2;
     JLabel WrongLabel3;
 
-    // Methods
+    /** ActionListner method for all buttons, textfields and the timer */
     public void actionPerformed(ActionEvent evt){
 		if(evt.getSource() == hvalue){
 			try{
@@ -178,7 +178,7 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
     }
 
 
-
+    /** ChangeListener method for h and k sliders */
 	public void stateChanged(ChangeEvent evt){
 		if(evt.getSource() == hslider){
 			hvalue.setText(hslider.getValue()+"");
@@ -205,14 +205,17 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
 		}
 	}
 
+    /** MenuListener preset method */
     public void menuCanceled(MenuEvent evt){
 		
 	}
 	
+    /** MenuListener preset method */
 	public void menuDeselected(MenuEvent evt){
 		
 	}
 	
+    /** MenuListener method, set and repaint panels accordingly when a menu item is selected at the menu bar*/
 	public void menuSelected(MenuEvent evt){
 		if(evt.getSource() == mainmenu){
 			theframe.setContentPane(thepanel);
@@ -470,6 +473,7 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
         Q3Group.add(Q3BButton);
         Q3Group.add(Q3CButton);
 
+        // Next Buttons
         Next2Button = new JButton("Next");
         Next2Button.setSize(300,30);
         Next2Button.setLocation(5,250);
@@ -484,6 +488,7 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
         quiz2panel.add(Next3Button);
         Next3Button.addActionListener(this);
 
+        // Correct and Wrong Labels
         WrongLabel1 = new JLabel("Wrong answer, the correct answer is 'vertical translation'");
         WrongLabel1.setSize(500,30);
         WrongLabel1.setLocation(5,130);
@@ -528,6 +533,7 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
         about.setPreferredSize(new Dimension(960,540));
         about.setLayout(null);
 
+        // Main Frame
         theframe.setContentPane(thepanel);
         theframe.pack();
         theframe.setResizable(false);
