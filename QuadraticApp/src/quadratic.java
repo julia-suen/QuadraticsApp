@@ -51,8 +51,28 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
 
     // Quiz Panel JComponents
     JLabel Q1Label;
-    
+    JLabel Q1ALabel;
+    JLabel Q1BLabel;
+    JLabel Q1CLabel;
+    JRadioButton Q1AButton;
+    JRadioButton Q1BButton;
+    JRadioButton Q1CButton;
 
+    JLabel Q2Label;
+    JLabel Q2ALabel;
+    JLabel Q2BLabel;
+    JLabel Q2CLabel;
+    JRadioButton Q2AButton;
+    JRadioButton Q2BButton;
+    JRadioButton Q2CButton;
+
+    JLabel Q3Label;
+    JLabel Q3ALabel;
+    JLabel Q3BLabel;
+    JLabel Q3CLabel;
+    JRadioButton Q3AButton;
+    JRadioButton Q3BButton;
+    JRadioButton Q3CButton;
 
 
     // Methods
@@ -265,11 +285,72 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
         quizpanel.setPreferredSize(new Dimension(960,540));
 		quizpanel.setLayout(null);
 		
-        Q1Label = new JLabel("Question 1");
-        Q1Label.setSize(300,200);
-        Q1Label.setLocation(30,20);
+        Q1Label = new JLabel("1. What does the 'k' value represents in the vertex form equation?");
+        Q1Label.setSize(600,20);
+        Q1Label.setLocation(5,5);
         quizpanel.add(Q1Label);
         
+        Q1ALabel = new JLabel("reflection across x-axis");
+        Q1ALabel.setSize(600,20);
+        Q1ALabel.setLocation(25,25);
+        quizpanel.add(Q1ALabel);
+
+        Q1BLabel = new JLabel("horizontal translation");
+        Q1BLabel.setSize(600,20);
+        Q1BLabel.setLocation(25,45);
+        quizpanel.add(Q1BLabel);
+
+        Q1CLabel = new JLabel("vertical translation");
+        Q1CLabel.setSize(600,20);
+        Q1CLabel.setLocation(25,65);
+        quizpanel.add(Q1CLabel);
+
+        Q2Label = new JLabel("<html> 2. Which of the following statements is true about the equation: f(x) = (x - 3)<sup>2</sup> - 8 </html>");
+        Q2Label.setSize(600,20);
+        Q2Label.setLocation(5,100);
+        quizpanel.add(Q2Label);
+        
+        Q2ALabel = new JLabel("horizontal translation 3 units to the right");
+        Q2ALabel.setSize(600,20);
+        Q2ALabel.setLocation(25,120);
+        quizpanel.add(Q2ALabel);
+
+        Q2BLabel = new JLabel("reflection across the x-axis");
+        Q2BLabel.setSize(600,20);
+        Q2BLabel.setLocation(25,140);
+        quizpanel.add(Q2BLabel);
+
+        Q2CLabel = new JLabel("vertical translation 8 units down");
+        Q2CLabel.setSize(600,20);
+        Q2CLabel.setLocation(25,160);
+        quizpanel.add(Q2CLabel);
+
+        Q3Label = new JLabel("3. Select the correct equation for the following descriptions: reflection across x-axis, vertical translation 9 units up, horizontal translation 1 unit left");
+        Q3Label.setSize(600,20);
+        Q3Label.setLocation(5,195);
+        quizpanel.add(Q3Label);
+        
+        Q3ALabel = new JLabel("<html> f(x) = - (x - 1)<sup>2</sup> + 9</html>");
+        Q3ALabel.setSize(600,20);
+        Q3ALabel.setLocation(25,215);
+        quizpanel.add(Q3ALabel);
+
+        Q3BLabel = new JLabel("<html> f(x) = (x - 1)<sup>2</sup> - 9</html>");
+        Q3BLabel.setSize(600,20);
+        Q3BLabel.setLocation(25,235);
+        quizpanel.add(Q3BLabel);
+
+        Q3CLabel = new JLabel("<html> f(x) = - (x + 1)<sup>2</sup> + 9</html>");
+        Q3CLabel.setSize(600,20);
+        Q3CLabel.setLocation(25,255);
+        quizpanel.add(Q3CLabel);
+
+        // Answer Buttons
+        Q1AButton = new JRadioButton();
+        Q1AButton.setSize(20,20);
+        Q1AButton.setLocation(5,25);
+        Q1AButton.addActionListener(this);
+
 		// Help Panel
 		helppanel.setPreferredSize(new Dimension(960,540));
         helppanel.setLayout(null);
