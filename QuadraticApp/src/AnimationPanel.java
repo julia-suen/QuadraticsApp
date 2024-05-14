@@ -11,6 +11,12 @@ public class AnimationPanel extends JPanel {
     public int intA;
     public int intH;
     public int intK;
+    int intX;
+    int intY;
+    int intDeltaX;
+    int intDeltaY;
+    int intLimitX;
+    int intLimitY;
     
 
     // Methods
@@ -18,8 +24,39 @@ public class AnimationPanel extends JPanel {
         super.paintComponent(g);
 
         // Variables for Graph translation
-        int intX = this.intH;
-        int intY = this.intK;
+        if(intH == -10){
+			intLimitX = 231;
+		}
+		if(intH == -9){
+			intLimitX = 209;
+		}
+		if(intH == -8){
+			intLimitX = 186;
+		}
+		if(intH == -7){
+			intLimitX = 163;
+		}
+		if(intH == -6){
+			intLimitX = 140;
+		}
+		if(intH == -5){
+			intLimitX = 116;
+		}
+		if(intH == -4){
+			intLimitX = 94;
+		}
+		if(intH == -3){
+			intLimitX = 71;
+		}
+		if(intH == -2){
+			intLimitX = 47;
+		}
+		if(intH == -1){
+			intLimitX = 24;
+		}
+		if(intH == 0){
+			intLimitX = 0;
+		}
         // Drawing Grid
         g.drawImage(imgGrid, 0, 0, null);
         // Covering up watermark
@@ -30,6 +67,7 @@ public class AnimationPanel extends JPanel {
         // around 23 to 24 pixels for x or y to move 1 horizontal or vertical
         g.drawImage(imgCurve, 0, -231, null);
         g.drawLine(540,0,540,540);
+        System.out.println(intH);
     }
 
     // Constructor  
