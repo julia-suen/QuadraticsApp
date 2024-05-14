@@ -5,6 +5,13 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "quadratic",
+            "request": "launch",
+            "mainClass": "quadratic",
+            "projectName": "QuadraticApp_7a362d8e"
+        },
+        {
             "type": "jdk",
             "request": "launch",
             "name": "Launch Java App"

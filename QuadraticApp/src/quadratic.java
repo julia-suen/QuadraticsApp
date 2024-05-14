@@ -5,7 +5,7 @@ import javax.swing.event.*;
 
 
 // To create jar file, type the following in terminal
-// jar --verbose --create --file jarexample.jar --main-class=keyboardmouse AnimationPanel.class keyboardmouse.class homer.png
+// jar --verbose --create --file jarexample.jar --main-class keyboardmouse AnimationPanel.class keyboardmouse.class homer.png
 // Create sub directory called "javadocs"
 // javadoc ../AnimationPanel.java
 // javadoc ../keyboardmouse.java
