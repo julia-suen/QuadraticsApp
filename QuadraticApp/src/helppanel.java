@@ -5,14 +5,17 @@ import javax.imageio.*;
 import javax.swing.*;
 
 public class helppanel extends JPanel{
+	// Properties
 	BufferedImage imgHelp;
 	
+	// Methods
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		
 		g.drawImage(imgHelp, 0, 0, null);
 	}
 	
+	// Constructor
 	public helppanel(){
 		super();
 		try{

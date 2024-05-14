@@ -10,7 +10,6 @@ public class AnimationPanel extends JPanel {
     BufferedImage imgCurve;
     BufferedImage imgMathIcon;
     ImageIcon imgIcon;
-    //public int intA;
     public int intH;
     public int intK;
     int intX = 0;
@@ -158,8 +157,6 @@ public class AnimationPanel extends JPanel {
         g.setColor(Color.WHITE);
         g.fillRect(0, 520, 540, 540);
         // Drawing Quadratic Graph
-        // x = 0 and y level at -231 is the origin on the graph (Default value)
-        // around 23 to 24 pixels for x or y to move 1 horizontal or vertical
         g.drawImage(imgCurve, intX, intY, null);
         g.drawLine(540,0,540,540);
     }
@@ -169,14 +166,12 @@ public class AnimationPanel extends JPanel {
         super();
         try{
             imgGrid = ImageIO.read(getClass().getResourceAsStream("/Images/grid.png"));
-            //imgGrid = ImageIO.read(new File("/Images/grid.png"));
         }catch(IOException e){
             System.out.println("Unable to load image");
             System.out.println(e.toString());
         }
         try {
             imgCurve = ImageIO.read(getClass().getResourceAsStream("/Images/parabola.png"));
-            //imgCurve = ImageIO.read(new File("/Images/parabola.png"));
         } catch (IOException e) {
             System.out.println("Unable to load image");
             System.out.println(e.toString());

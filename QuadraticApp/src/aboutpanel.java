@@ -5,14 +5,17 @@ import javax.imageio.*;
 import javax.swing.*;
 
 public class aboutpanel extends JPanel{
+	// Properties
 	BufferedImage imgAbout;
 	
+	// Methods
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		
 		g.drawImage(imgAbout, 0, 0, null);
 	}
 	
+	// Constructor
 	public aboutpanel(){
 		super();
 		try{

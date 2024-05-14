@@ -23,7 +23,6 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
     JPanel quiz1panel = new JPanel();
     JPanel quiz2panel = new JPanel();
     JPanel quiz3panel = new JPanel();
-    //JPanel helppanel = new JPanel();
     helppanel help = new helppanel();
     aboutpanel about = new aboutpanel();
     Timer thetimer = new Timer(1000/48, this);
@@ -33,8 +32,6 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
 	JMenu helpmenu = new JMenu("Help");
 	JMenu aboutmenu = new JMenu("About");
 	JLabel formulalabel;
-    //JButton apos1;
-    //JButton aneg1;
     JLabel hlabel;
     JLabel klabel;
     JSlider hslider;
@@ -47,7 +44,6 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
     JLabel atrans;
     JLabel htrans;
     JLabel ktrans;
-	//public int intA = 1;
 	public int intH = 0;
 	public int intK = 0;
 
@@ -91,27 +87,10 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
 
     // Methods
     public void actionPerformed(ActionEvent evt){
-		/* 
-        if(evt.getSource() == apos1){
-			intA = 1;
-			//System.out.println(intA);
-            thepanel.intA = this.intA;
-            atrans.setText("");
-		}
-
-		if(evt.getSource() == aneg1){
-			intA = -1;
-			//System.out.println(intA);
-            thepanel.intA = this.intA;
-            atrans.setText("-");
-		}
-        */
-
 		if(evt.getSource() == hvalue){
 			try{
 				intH = Integer.parseInt(hvalue.getText());
 				hslider.setValue(intH);
-				//System.out.println(intH);
 			}catch(NumberFormatException e){
 				hvalue.setText("0");
 				hslider.setValue(0);
@@ -122,7 +101,6 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
 			try{
 				intK = Integer.parseInt(kvalue.getText());
 				kslider.setValue(intK);
-				//System.out.println(intK);
 			}catch(NumberFormatException e){
 				kvalue.setText("0");
 				kslider.setValue(0);
@@ -144,9 +122,7 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
         }
 
         // Quiz Panel buttons
-        
         if(evt.getSource() == Q1AButton){
-            // System.out.println("A");
             CorrectLabel.setVisible(false);
             WrongLabel1.setVisible(true);
             Next2Button.setVisible(true);
@@ -214,7 +190,6 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
             }else{
                 htrans.setText("-"+this.intH);
             }
-			//System.out.println(intH);
 		}
 		
 		if(evt.getSource() == kslider){
@@ -280,20 +255,6 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
         formulalabel.setSize(200,100);
         formulalabel.setLocation(650,20);
         thepanel.add(formulalabel);
-
-        /* 
-        apos1 = new JButton("a = 1");
-        apos1.setSize(100,30);
-        apos1.setLocation(600, 120);
-        apos1.addActionListener(this);
-        thepanel.add(apos1);
-
-        aneg1 = new JButton("a = -1");
-        aneg1.setSize(100,30);
-        aneg1.setLocation(800, 120);
-        aneg1.addActionListener(this);
-        thepanel.add(aneg1);
-        */
 
         hlabel = new JLabel("h");
         hlabel.setSize(30,30);
