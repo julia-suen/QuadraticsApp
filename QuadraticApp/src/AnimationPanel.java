@@ -24,6 +24,8 @@ public class AnimationPanel extends JPanel {
         super.paintComponent(g);
 
         // Variables for Graph translation
+        //System.out.println(intH);
+        
         if(intH == -10){
 			intLimitX = 231;
 		}
@@ -67,7 +69,6 @@ public class AnimationPanel extends JPanel {
         // around 23 to 24 pixels for x or y to move 1 horizontal or vertical
         g.drawImage(imgCurve, 0, -231, null);
         g.drawLine(540,0,540,540);
-        System.out.println(intH);
     }
 
     // Constructor  
