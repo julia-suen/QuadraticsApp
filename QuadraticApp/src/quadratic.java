@@ -19,19 +19,20 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
     // Properties
     JFrame theframe = new JFrame("Quadratic");
     AnimationPanel thepanel = new AnimationPanel();
-    JPanel quizpanel = new JPanel();
+    JPanel quiz1panel = new JPanel();
+    JPanel quiz2panel = new JPanel();
+    JPanel quiz3panel = new JPanel();
     JPanel helppanel = new JPanel();
     JPanel aboutpanel = new JPanel();
     Timer thetimer = new Timer(1000/48, this);
-    ImageIcon imgIcon = new ImageIcon("Images/mathicon.png");
 	JMenuBar themenubar = new JMenuBar();
 	JMenu mainmenu = new JMenu("Main");
     JMenu quizmenu = new JMenu("Quiz");
 	JMenu helpmenu = new JMenu("Help");
 	JMenu aboutmenu = new JMenu("About");
 	JLabel formulalabel;
-    JButton apos1;
-    JButton aneg1;
+    //JButton apos1;
+    //JButton aneg1;
     JLabel hlabel;
     JLabel klabel;
     JSlider hslider;
@@ -44,7 +45,7 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
     JLabel atrans;
     JLabel htrans;
     JLabel ktrans;
-	public int intA = 1;
+	//public int intA = 1;
 	public int intH = 0;
 	public int intK = 0;
 
@@ -57,6 +58,7 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
     JRadioButton Q1AButton;
     JRadioButton Q1BButton;
     JRadioButton Q1CButton;
+    ButtonGroup Q1Group;
 
     JLabel Q2Label;
     JLabel Q2ALabel;
@@ -65,6 +67,7 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
     JRadioButton Q2AButton;
     JRadioButton Q2BButton;
     JRadioButton Q2CButton;
+    ButtonGroup Q2Group;
 
     JLabel Q3Label;
     JLabel Q3ALabel;
@@ -73,11 +76,16 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
     JRadioButton Q3AButton;
     JRadioButton Q3BButton;
     JRadioButton Q3CButton;
+    ButtonGroup Q3Group;
 
+    JButton NextButton;
+    JLabel CorrectLabel;
+    JLabel WrongLabel;
 
     // Methods
     public void actionPerformed(ActionEvent evt){
-		if(evt.getSource() == apos1){
+		/* 
+        if(evt.getSource() == apos1){
 			intA = 1;
 			//System.out.println(intA);
             thepanel.intA = this.intA;
@@ -90,6 +98,7 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
             thepanel.intA = this.intA;
             atrans.setText("-");
 		}
+        */
 
 		if(evt.getSource() == hvalue){
 			try{
@@ -112,14 +121,33 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
 				kslider.setValue(0);
 			}
 		}
-		
-		/*
+
         if(evt.getSource() == thetimer){
-			if(intLimitX > intX){
-				
+			if(thepanel.intX < thepanel.intLimitX){
+				thepanel.intX = thepanel.intX + thepanel.intDeltaX;
+			}else if(thepanel.intX > thepanel.intLimitX){
+				thepanel.intX = thepanel.intX - thepanel.intDeltaX;
+			}
+			if(thepanel.intY > thepanel.intLimitY){
+				thepanel.intY = thepanel.intY - thepanel.intDeltaY;
+			}else if(thepanel.intY < thepanel.intLimitY){
+				thepanel.intY = thepanel.intY + thepanel.intDeltaY;
+			}
+			thepanel.repaint();
         }
-        */
+
+        // Quiz Panel buttons
+        
+        if(evt.getSource() == Q1AButton){
+            System.out.println("A");
+        }else if(evt.getSource() == Q1BButton){
+            System.out.println("B");
+        }else if(evt.getSource() == Q1CButton){
+            System.out.println("C");
+        }
+          
     }
+
 
 
 	public void stateChanged(ChangeEvent evt){
@@ -167,7 +195,7 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
 			theframe.pack();
 			theframe.repaint();
 		}else if(evt.getSource() == quizmenu){
-			theframe.setContentPane(quizpanel);
+			theframe.setContentPane(quiz1panel);
 			theframe.pack();
 			theframe.repaint();
 		}
@@ -196,6 +224,7 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
         formulalabel.setLocation(650,5);
         thepanel.add(formulalabel);
 
+        /* 
         apos1 = new JButton("a = 1");
         apos1.setSize(100,30);
         apos1.setLocation(600, 120);
@@ -207,6 +236,7 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
         aneg1.setLocation(800, 120);
         aneg1.addActionListener(this);
         thepanel.add(aneg1);
+        */
 
         hlabel = new JLabel("h");
         hlabel.setSize(30,30);
@@ -263,6 +293,7 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
 		transformation3.setLocation(670,250);
 		thepanel.add(transformation3);
 
+        
         atrans = new JLabel("a");
         atrans.setFont(new Font("Calibri", Font.PLAIN, 24));
 		atrans.setSize(300,200);
@@ -282,74 +313,150 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
 		thepanel.add(ktrans);
 
         // Quiz Panel
-        quizpanel.setPreferredSize(new Dimension(960,540));
-		quizpanel.setLayout(null);
+        quiz1panel.setPreferredSize(new Dimension(960,540));
+		quiz1panel.setLayout(null);
 		
+        quiz2panel.setPreferredSize(new Dimension(960,540));
+		quiz2panel.setLayout(null);
+
+        quiz3panel.setPreferredSize(new Dimension(960,540));
+		quiz3panel.setLayout(null);
+
         Q1Label = new JLabel("1. What does the 'k' value represents in the vertex form equation?");
         Q1Label.setSize(600,20);
         Q1Label.setLocation(5,5);
-        quizpanel.add(Q1Label);
+        quiz1panel.add(Q1Label);
         
         Q1ALabel = new JLabel("reflection across x-axis");
         Q1ALabel.setSize(600,20);
         Q1ALabel.setLocation(25,25);
-        quizpanel.add(Q1ALabel);
+        quiz1panel.add(Q1ALabel);
 
         Q1BLabel = new JLabel("horizontal translation");
         Q1BLabel.setSize(600,20);
         Q1BLabel.setLocation(25,45);
-        quizpanel.add(Q1BLabel);
+        quiz1panel.add(Q1BLabel);
 
         Q1CLabel = new JLabel("vertical translation");
         Q1CLabel.setSize(600,20);
         Q1CLabel.setLocation(25,65);
-        quizpanel.add(Q1CLabel);
+        quiz2panel.add(Q1CLabel);
 
         Q2Label = new JLabel("<html> 2. Which of the following statements is true about the equation: f(x) = (x - 3)<sup>2</sup> - 8 </html>");
         Q2Label.setSize(600,20);
-        Q2Label.setLocation(5,100);
-        quizpanel.add(Q2Label);
+        Q2Label.setLocation(5,5);
+        quiz2panel.add(Q2Label);
         
         Q2ALabel = new JLabel("horizontal translation 3 units to the right");
         Q2ALabel.setSize(600,20);
-        Q2ALabel.setLocation(25,120);
-        quizpanel.add(Q2ALabel);
+        Q2ALabel.setLocation(25,25);
+        quiz2panel.add(Q2ALabel);
 
         Q2BLabel = new JLabel("reflection across the x-axis");
         Q2BLabel.setSize(600,20);
-        Q2BLabel.setLocation(25,140);
-        quizpanel.add(Q2BLabel);
+        Q2BLabel.setLocation(25,45);
+        quiz2panel.add(Q2BLabel);
 
         Q2CLabel = new JLabel("vertical translation 8 units down");
         Q2CLabel.setSize(600,20);
-        Q2CLabel.setLocation(25,160);
-        quizpanel.add(Q2CLabel);
+        Q2CLabel.setLocation(25,65);
+        quiz2panel.add(Q2CLabel);
 
         Q3Label = new JLabel("3. Select the correct equation for the following descriptions: reflection across x-axis, vertical translation 9 units up, horizontal translation 1 unit left");
         Q3Label.setSize(600,20);
-        Q3Label.setLocation(5,195);
-        quizpanel.add(Q3Label);
+        Q3Label.setLocation(5,5);
+        quiz3panel.add(Q3Label);
         
         Q3ALabel = new JLabel("<html> f(x) = - (x - 1)<sup>2</sup> + 9</html>");
         Q3ALabel.setSize(600,20);
-        Q3ALabel.setLocation(25,215);
-        quizpanel.add(Q3ALabel);
+        Q3ALabel.setLocation(25,25);
+        quiz3panel.add(Q3ALabel);
 
         Q3BLabel = new JLabel("<html> f(x) = (x - 1)<sup>2</sup> - 9</html>");
         Q3BLabel.setSize(600,20);
-        Q3BLabel.setLocation(25,235);
-        quizpanel.add(Q3BLabel);
+        Q3BLabel.setLocation(25,45);
+        quiz3panel.add(Q3BLabel);
 
         Q3CLabel = new JLabel("<html> f(x) = - (x + 1)<sup>2</sup> + 9</html>");
         Q3CLabel.setSize(600,20);
-        Q3CLabel.setLocation(25,255);
-        quizpanel.add(Q3CLabel);
+        Q3CLabel.setLocation(25,65);
+        quiz3panel.add(Q3CLabel);
 
         // Answer Buttons
         Q1AButton = new JRadioButton();
         Q1AButton.setSize(20,20);
         Q1AButton.setLocation(5,25);
+        quiz1panel.add(Q1AButton);
         Q1AButton.addActionListener(this);
+
+        Q1BButton = new JRadioButton();
+        Q1BButton.setSize(20,20);
+        Q1BButton.setLocation(5,45);
+        quiz1panel.add(Q1BButton);
+        Q1BButton.addActionListener(this);
+
+        Q1CButton = new JRadioButton();
+        Q1CButton.setSize(20,20);
+        Q1CButton.setLocation(5,65);
+        quiz1panel.add(Q1CButton);
+        Q1CButton.addActionListener(this);
+
+        Q1Group = new ButtonGroup();
+        Q1Group.add(Q1AButton);
+        Q1Group.add(Q1BButton);
+        Q1Group.add(Q1CButton);
+
+        Q2AButton = new JRadioButton();
+        Q2AButton.setSize(20,20);
+        Q2AButton.setLocation(5,25);
+        quiz2panel.add(Q2AButton);
+        Q2AButton.addActionListener(this);
+
+        Q2BButton = new JRadioButton();
+        Q2BButton.setSize(20,20);
+        Q2BButton.setLocation(5,45);
+        quiz2panel.add(Q2BButton);
+        Q2BButton.addActionListener(this);
+
+        Q2CButton = new JRadioButton();
+        Q2CButton.setSize(20,20);
+        Q2CButton.setLocation(5,65);
+        quiz2panel.add(Q2CButton);
+        Q2CButton.addActionListener(this);
+
+        Q2Group = new ButtonGroup();
+        Q2Group.add(Q2AButton);
+        Q2Group.add(Q2BButton);
+        Q2Group.add(Q2CButton);
+
+        Q3AButton = new JRadioButton();
+        Q3AButton.setSize(20,20);
+        Q3AButton.setLocation(5,25);
+        quiz3panel.add(Q3AButton);
+        Q3AButton.addActionListener(this);
+
+        Q3BButton = new JRadioButton();
+        Q3BButton.setSize(20,20);
+        Q3BButton.setLocation(5,45);
+        quiz3panel.add(Q3BButton);
+        Q3BButton.addActionListener(this);
+
+        Q3CButton = new JRadioButton();
+        Q3CButton.setSize(20,20);
+        Q3CButton.setLocation(5,65);
+        quiz3panel.add(Q3CButton);
+        Q3CButton.addActionListener(this);
+
+        Q3Group = new ButtonGroup();
+        Q3Group.add(Q3AButton);
+        Q3Group.add(Q3BButton);
+        Q3Group.add(Q3CButton);
+
+        NextButton = new JButton("Check your answer!");
+        NextButton.setSize(300,30);
+        NextButton.setLocation(5,300);
+        quiz1panel.add(NextButton);
+        NextButton.addActionListener(this);
 
 		// Help Panel
 		helppanel.setPreferredSize(new Dimension(960,540));
@@ -363,7 +470,7 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
         theframe.pack();
         theframe.setResizable(false);
         theframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        theframe.setIconImage(imgIcon.getImage());
+        theframe.setIconImage(thepanel.imgIcon.getImage());
         theframe.setLocationRelativeTo(null);
         theframe.setVisible(true);
         thetimer.start();
