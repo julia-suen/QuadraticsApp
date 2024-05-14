@@ -25,7 +25,7 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
     JPanel quiz3panel = new JPanel();
     //JPanel helppanel = new JPanel();
     helppanel help = new helppanel();
-    aboutpanel aboutpanel = new aboutpanel();
+    aboutpanel about = new aboutpanel();
     Timer thetimer = new Timer(1000/48, this);
 	JMenuBar themenubar = new JMenuBar();
 	JMenu mainmenu = new JMenu("Main");
@@ -245,6 +245,10 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
 			theframe.repaint();
 		}else if(evt.getSource() == helpmenu){
 			theframe.setContentPane(help);
+			theframe.pack();
+			theframe.repaint();
+		}else if(evt.getSource() == aboutmenu){
+			theframe.setContentPane(about);
 			theframe.pack();
 			theframe.repaint();
 		}else if(evt.getSource() == quizmenu){
@@ -560,8 +564,8 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
         help.setLayout(null);
 
 		// About Panel
-        aboutpanel.setPreferredSize(new Dimension(960,540));
-        aboutpanel.setLayout(null);
+        about.setPreferredSize(new Dimension(960,540));
+        about.setLayout(null);
 
         theframe.setContentPane(thepanel);
         theframe.pack();
