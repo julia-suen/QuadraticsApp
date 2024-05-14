@@ -17,13 +17,15 @@ import javax.swing.event.*;
 
 public class quadratic implements ActionListener, ChangeListener, MenuListener{
     // Properties
-    JFrame theframe = new JFrame("Quadratic");
+    /** main  */
+    JFrame theframe = new JFrame("Quadratic in Vertex Form");
     AnimationPanel thepanel = new AnimationPanel();
     JPanel quiz1panel = new JPanel();
     JPanel quiz2panel = new JPanel();
     JPanel quiz3panel = new JPanel();
-    JPanel helppanel = new JPanel();
-    JPanel aboutpanel = new JPanel();
+    //JPanel helppanel = new JPanel();
+    helppanel help = new helppanel();
+    aboutpanel aboutpanel = new aboutpanel();
     Timer thetimer = new Timer(1000/48, this);
 	JMenuBar themenubar = new JMenuBar();
 	JMenu mainmenu = new JMenu("Main");
@@ -78,9 +80,14 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
     JRadioButton Q3CButton;
     ButtonGroup Q3Group;
 
-    JButton NextButton;
+    JButton Next2Button;
+    JButton Next3Button;
     JLabel CorrectLabel;
-    JLabel WrongLabel;
+    JLabel CorrectLabel2;
+    JLabel CorrectLabel3;
+    JLabel WrongLabel1;
+    JLabel WrongLabel2;
+    JLabel WrongLabel3;
 
     // Methods
     public void actionPerformed(ActionEvent evt){
@@ -139,13 +146,59 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
         // Quiz Panel buttons
         
         if(evt.getSource() == Q1AButton){
-            System.out.println("A");
+            // System.out.println("A");
+            CorrectLabel.setVisible(false);
+            WrongLabel1.setVisible(true);
+            Next2Button.setVisible(true);
         }else if(evt.getSource() == Q1BButton){
-            System.out.println("B");
+            CorrectLabel.setVisible(false);
+            WrongLabel1.setVisible(true);
+            Next2Button.setVisible(true);
         }else if(evt.getSource() == Q1CButton){
-            System.out.println("C");
+            // Correct
+            WrongLabel1.setVisible(false);
+            CorrectLabel.setVisible(true);
+            Next2Button.setVisible(true);
+        }
+
+        if(evt.getSource() == Next2Button){
+            theframe.setContentPane(quiz2panel);
+            theframe.pack();
+			theframe.repaint();
         }
           
+        if(evt.getSource() == Q2AButton){
+            CorrectLabel2.setVisible(false);
+            WrongLabel2.setVisible(true);
+            Next3Button.setVisible(true);
+        }else if(evt.getSource() == Q2BButton){
+            CorrectLabel2.setVisible(false);
+            WrongLabel2.setVisible(true);
+            Next3Button.setVisible(true);
+        }else if(evt.getSource() == Q2CButton){
+            // Correct
+            WrongLabel2.setVisible(false);
+            CorrectLabel2.setVisible(true);
+            Next3Button.setVisible(true);
+        }
+
+        if(evt.getSource() == Next3Button){
+            theframe.setContentPane(quiz3panel);
+            theframe.pack();
+			theframe.repaint();
+        }
+
+        if(evt.getSource() == Q3AButton){
+            // Correct
+            WrongLabel3.setVisible(false);
+            CorrectLabel3.setVisible(true);
+        }else if(evt.getSource() == Q3BButton){
+            CorrectLabel3.setVisible(false);
+            WrongLabel3.setVisible(true);
+        }else if(evt.getSource() == Q3CButton){
+            CorrectLabel3.setVisible(false);
+            WrongLabel3.setVisible(true);
+        }
     }
 
 
@@ -191,7 +244,7 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
 			theframe.pack();
 			theframe.repaint();
 		}else if(evt.getSource() == helpmenu){
-			theframe.setContentPane(helppanel);
+			theframe.setContentPane(help);
 			theframe.pack();
 			theframe.repaint();
 		}else if(evt.getSource() == quizmenu){
@@ -221,7 +274,7 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
         formulalabel = new JLabel("<html> f(x) = a(x - h)<sup>2</sup> + k </html>");
         formulalabel.setFont(new Font("Calibri", Font.PLAIN, 24));
         formulalabel.setSize(200,100);
-        formulalabel.setLocation(650,5);
+        formulalabel.setLocation(650,20);
         thepanel.add(formulalabel);
 
         /* 
@@ -323,7 +376,7 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
 		quiz3panel.setLayout(null);
 
         Q1Label = new JLabel("1. What does the 'k' value represents in the vertex form equation?");
-        Q1Label.setSize(600,20);
+        Q1Label.setSize(800,20);
         Q1Label.setLocation(5,5);
         quiz1panel.add(Q1Label);
         
@@ -340,19 +393,19 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
         Q1CLabel = new JLabel("vertical translation");
         Q1CLabel.setSize(600,20);
         Q1CLabel.setLocation(25,65);
-        quiz2panel.add(Q1CLabel);
+        quiz1panel.add(Q1CLabel);
 
         Q2Label = new JLabel("<html> 2. Which of the following statements is true about the equation: f(x) = (x - 3)<sup>2</sup> - 8 </html>");
-        Q2Label.setSize(600,20);
+        Q2Label.setSize(800,20);
         Q2Label.setLocation(5,5);
         quiz2panel.add(Q2Label);
         
-        Q2ALabel = new JLabel("horizontal translation 3 units to the right");
+        Q2ALabel = new JLabel("horizontal translation 3 units to the left");
         Q2ALabel.setSize(600,20);
         Q2ALabel.setLocation(25,25);
         quiz2panel.add(Q2ALabel);
 
-        Q2BLabel = new JLabel("reflection across the x-axis");
+        Q2BLabel = new JLabel("horizontal translation 4 units to the right");
         Q2BLabel.setSize(600,20);
         Q2BLabel.setLocation(25,45);
         quiz2panel.add(Q2BLabel);
@@ -362,12 +415,12 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
         Q2CLabel.setLocation(25,65);
         quiz2panel.add(Q2CLabel);
 
-        Q3Label = new JLabel("3. Select the correct equation for the following descriptions: reflection across x-axis, vertical translation 9 units up, horizontal translation 1 unit left");
-        Q3Label.setSize(600,20);
+        Q3Label = new JLabel("3. Select the correct equation for the following descriptions: vertical translation 9 units up, horizontal translation 1 unit left");
+        Q3Label.setSize(900,20);
         Q3Label.setLocation(5,5);
         quiz3panel.add(Q3Label);
         
-        Q3ALabel = new JLabel("<html> f(x) = - (x - 1)<sup>2</sup> + 9</html>");
+        Q3ALabel = new JLabel("<html> f(x) = (x + 1)<sup>2</sup> + 9</html>");
         Q3ALabel.setSize(600,20);
         Q3ALabel.setLocation(25,25);
         quiz3panel.add(Q3ALabel);
@@ -377,7 +430,7 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
         Q3BLabel.setLocation(25,45);
         quiz3panel.add(Q3BLabel);
 
-        Q3CLabel = new JLabel("<html> f(x) = - (x + 1)<sup>2</sup> + 9</html>");
+        Q3CLabel = new JLabel("<html> f(x) = (x - 1)<sup>2</sup> + 9</html>");
         Q3CLabel.setSize(600,20);
         Q3CLabel.setLocation(25,65);
         quiz3panel.add(Q3CLabel);
@@ -431,19 +484,19 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
 
         Q3AButton = new JRadioButton();
         Q3AButton.setSize(20,20);
-        Q3AButton.setLocation(5,25);
+        Q3AButton.setLocation(5,30);
         quiz3panel.add(Q3AButton);
         Q3AButton.addActionListener(this);
 
         Q3BButton = new JRadioButton();
         Q3BButton.setSize(20,20);
-        Q3BButton.setLocation(5,45);
+        Q3BButton.setLocation(5,50);
         quiz3panel.add(Q3BButton);
         Q3BButton.addActionListener(this);
 
         Q3CButton = new JRadioButton();
         Q3CButton.setSize(20,20);
-        Q3CButton.setLocation(5,65);
+        Q3CButton.setLocation(5,70);
         quiz3panel.add(Q3CButton);
         Q3CButton.addActionListener(this);
 
@@ -452,15 +505,59 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
         Q3Group.add(Q3BButton);
         Q3Group.add(Q3CButton);
 
-        NextButton = new JButton("Check your answer!");
-        NextButton.setSize(300,30);
-        NextButton.setLocation(5,300);
-        quiz1panel.add(NextButton);
-        NextButton.addActionListener(this);
+        Next2Button = new JButton("Next");
+        Next2Button.setSize(300,30);
+        Next2Button.setLocation(5,250);
+        Next2Button.setVisible(false);
+        quiz1panel.add(Next2Button);
+        Next2Button.addActionListener(this);
 
+        Next3Button = new JButton("Next");
+        Next3Button.setSize(300,30);
+        Next3Button.setLocation(5,250);
+        Next3Button.setVisible(false);
+        quiz2panel.add(Next3Button);
+        Next3Button.addActionListener(this);
+
+        WrongLabel1 = new JLabel("Wrong answer, the correct answer is 'vertical translation'");
+        WrongLabel1.setSize(500,30);
+        WrongLabel1.setLocation(5,130);
+        WrongLabel1.setVisible(false);
+        quiz1panel.add(WrongLabel1);
+
+        WrongLabel2 = new JLabel("Wrong answer, the correct answer is 'vertical translation 8 units down'");
+        WrongLabel2.setSize(500,30);
+        WrongLabel2.setLocation(5,130);
+        WrongLabel2.setVisible(false);
+        quiz2panel.add(WrongLabel2);
+
+        WrongLabel3 = new JLabel("<html>Wrong answer, the correct answer is f(x) = (x + 1)<sup>2</sup> + 9<br>Please return to main menu</br></html>");
+        WrongLabel3.setSize(500,60);
+        WrongLabel3.setLocation(5,130);
+        WrongLabel3.setVisible(false);
+        quiz3panel.add(WrongLabel3);
+
+        CorrectLabel = new JLabel("Correct:) Try the next question!");
+        CorrectLabel.setSize(500,30);
+        CorrectLabel.setLocation(5,130);
+        CorrectLabel.setVisible(false); 
+        quiz1panel.add(CorrectLabel);
+
+        CorrectLabel2 = new JLabel("Correct:) Try the next question!");
+        CorrectLabel2.setSize(500,30);
+        CorrectLabel2.setLocation(5,130);
+        CorrectLabel2.setVisible(false); 
+        quiz2panel.add(CorrectLabel2);
+
+        CorrectLabel3 = new JLabel("Correct:) Please return to main menu");
+        CorrectLabel3.setSize(500,30);
+        CorrectLabel3.setLocation(5,130);
+        CorrectLabel3.setVisible(false); 
+        quiz3panel.add(CorrectLabel3);
+        
 		// Help Panel
-		helppanel.setPreferredSize(new Dimension(960,540));
-        helppanel.setLayout(null);
+		help.setPreferredSize(new Dimension(960,540));
+        help.setLayout(null);
 
 		// About Panel
         aboutpanel.setPreferredSize(new Dimension(960,540));
