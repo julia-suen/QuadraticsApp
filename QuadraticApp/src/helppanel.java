@@ -4,6 +4,7 @@ import java.io.*;
 import javax.imageio.*;
 import javax.swing.*;
 
+/** Create an extension of JPanel for Help Page */
 public class helppanel extends JPanel{
 	// Properties
 	/** Create a BufferedImage object to store the Help screen image */
