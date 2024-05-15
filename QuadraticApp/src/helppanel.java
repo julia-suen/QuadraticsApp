@@ -6,9 +6,11 @@ import javax.swing.*;
 
 public class helppanel extends JPanel{
 	// Properties
-	BufferedImage imgHelp;
+	/** Create a BufferedImage object to store the Help screen image */
+	public BufferedImage imgHelp;
 	
 	// Methods
+	/** Paints the Help page to the screen when triggered */
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		
@@ -16,6 +18,7 @@ public class helppanel extends JPanel{
 	}
 	
 	// Constructor
+	/** Loads Help page to the BufferedImage object */
 	public helppanel(){
 		super();
 		try{

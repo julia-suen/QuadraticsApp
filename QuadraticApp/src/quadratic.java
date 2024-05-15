@@ -1,3 +1,7 @@
+// Title: GUI Assignment - quadratics 
+// Programmer Name: Anton Law and Julia Suen
+// Version Number: Version 1
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -18,76 +22,157 @@ import javax.swing.event.*;
 public class quadratic implements ActionListener, ChangeListener, MenuListener{
     // Properties
     /** Main Panel JComponents */
-    JFrame theframe = new JFrame("Quadratic in Vertex Form");
-    AnimationPanel thepanel = new AnimationPanel();
-    JPanel quiz1panel = new JPanel();
-    JPanel quiz2panel = new JPanel();
-    JPanel quiz3panel = new JPanel();
-    helppanel help = new helppanel();
-    aboutpanel about = new aboutpanel();
-    Timer thetimer = new Timer(1000/48, this);
-	JMenuBar themenubar = new JMenuBar();
-	JMenu mainmenu = new JMenu("Main");
-    JMenu quizmenu = new JMenu("Quiz");
-	JMenu helpmenu = new JMenu("Help");
-	JMenu aboutmenu = new JMenu("About");
-	JLabel formulalabel;
-    JLabel hlabel;
-    JLabel klabel;
-    JSlider hslider;
-    JSlider kslider;
-    JTextField hvalue;
-    JTextField kvalue;
-    JLabel transformation1;
-    JLabel transformation2;
-    JLabel transformation3;
-    JLabel atrans;
-    JLabel htrans;
-    JLabel ktrans;
-	public int intH = 0;
+    
+    // Frame and Panels
+    /** Main Frame */
+    public JFrame theframe = new JFrame("Quadratic in Vertex Form");
+    /** Animation of the quadratic function on main menu */
+    public AnimationPanel thepanel = new AnimationPanel();
+    /** JPanel for question 1 on quiz menu */
+    public JPanel quiz1panel = new JPanel();
+    /** JPanel for question 2 on quiz menu */
+    public JPanel quiz2panel = new JPanel();
+    /** JPanel for question 3 on quiz menu */
+    public JPanel quiz3panel = new JPanel();
+    /** help panel loads the image for help screen that demonstrates how to use the program */
+    public helppanel help = new helppanel();
+    /** about panel loads the image for about screen that acknowledges the programmers */
+    public aboutpanel about = new aboutpanel();
+    /** timer for animation panel */
+    
+    // Timer
+    public Timer thetimer = new Timer(1000/48, this);
+
+    // Menus
+	/** JMenuBar on the top of the screen that contains main, quiz, help, and about menus */
+    public JMenuBar themenubar = new JMenuBar();
+	/** Select main menu for the interactive graph by changing k and h variable in a quadratic equation */
+    public JMenu mainmenu = new JMenu("Main");
+    /** Select quiz menu for a test on concepts of quadratic equation in vertex form */
+    public JMenu quizmenu = new JMenu("Quiz");
+	/** Select help menu for a demonstration of the program */
+    public JMenu helpmenu = new JMenu("Help");
+    /** Select about menu to know more about the programmers */
+	public JMenu aboutmenu = new JMenu("About");
+    /** JLabel to show the general formula of a quadratic equation in vertex form */
+	
+    // Interactive labels, sliders, textfields on main panel 
+    public JLabel formulalabel;
+    /** JLabel to indicate h variable */
+    public JLabel hlabel;
+    /** JLabel to indicate k variable */
+    public JLabel klabel;
+    /** JSlider to modify the h variable */
+    public JSlider hslider;
+    /** JSlider to modify the k variable */
+    public JSlider kslider;
+    /** JTextField for user to type the h value */
+    public JTextField hvalue;
+    /** JTextField for user to type the k value */
+    public JTextField kvalue;
+    /** JLabel (1) for the modified formula */
+    public JLabel transformation1;
+    /** JLabel (2) for the modified formula */
+    public JLabel transformation2;
+    /** JLabel (3) for the modified formula */
+    public JLabel transformation3;
+    /** JLabel (4) for the modified formula */
+    public JLabel atrans;
+    /** JLabel (5) for the modified formula */
+    public JLabel htrans;
+    /** JLabel (6) for the modified formula */
+    public JLabel ktrans;
+
+    // h and k values 
+	/** public property for h value to share with the AnimationPanel for animation of graph */
+    public int intH = 0;
+    /** public property for k value to share with the AnimationPanel for animation of graph */
 	public int intK = 0;
 
 
     // Quiz Panel JComponents
-    JLabel Q1Label;
-    JLabel Q1ALabel;
-    JLabel Q1BLabel;
-    JLabel Q1CLabel;
-    JRadioButton Q1AButton;
-    JRadioButton Q1BButton;
-    JRadioButton Q1CButton;
-    ButtonGroup Q1Group;
 
-    JLabel Q2Label;
-    JLabel Q2ALabel;
-    JLabel Q2BLabel;
-    JLabel Q2CLabel;
-    JRadioButton Q2AButton;
-    JRadioButton Q2BButton;
-    JRadioButton Q2CButton;
-    ButtonGroup Q2Group;
+    // Question 1
+    /** JLabel to display Question 1 on quiz panel 1 */
+    public JLabel Q1Label;
+    /** JLabel for Question 1 first answer on quiz panel 1 */
+    public JLabel Q1ALabel;
+    /** JLabel for Question 1 second answer on quiz panel 1 */
+    public JLabel Q1BLabel;
+    /** JLabel for Question 1 third answer on quiz panel 1*/
+    public JLabel Q1CLabel;
+    /** JRadioButton for Question 1 first answer on quiz panel 1 */
+    public JRadioButton Q1AButton;
+    /** JRadioButton for Question 1 second answer on quiz panel 1 */
+    public JRadioButton Q1BButton;
+    /** JRadioButton for Question 1 third answer on quiz panel 1 */
+    public JRadioButton Q1CButton;
+    /** Button Group for the 3 radiobuttons for question 1 on quiz panel 1 */
+    public ButtonGroup Q1Group;
 
-    JLabel Q3Label;
-    JLabel Q3ALabel;
-    JLabel Q3BLabel;
-    JLabel Q3CLabel;
-    JRadioButton Q3AButton;
-    JRadioButton Q3BButton;
-    JRadioButton Q3CButton;
-    ButtonGroup Q3Group;
+    // Question 2
+    /** JLabel to display Question 2 on quiz panel 2 */
+    public JLabel Q2Label;
+    /** JLabel for Question 2 first answer on quiz panel 2 */
+    public JLabel Q2ALabel;
+    /** JLabel for Question 2 second answer on quiz panel 2 */
+    public JLabel Q2BLabel;
+    /** JLabel for Question 2 third answer on quiz panel 2 */
+    public JLabel Q2CLabel;
+    /** JRadioButton for Question 2 first answer on quiz panel 2 */
+    public JRadioButton Q2AButton;
+    /** JRadioButton for Question 2 second answer on quiz panel 2 */
+    public JRadioButton Q2BButton;
+    /** JRadioButton for Question 2 third answer on quiz panel 2 */
+    public JRadioButton Q2CButton;
+    /** Button Group for the 3 radiobuttons for question 2 on quiz panel 2 */
+    public ButtonGroup Q2Group;
 
-    JButton Next2Button;
-    JButton Next3Button;
-    JLabel CorrectLabel;
-    JLabel CorrectLabel2;
-    JLabel CorrectLabel3;
-    JLabel WrongLabel1;
-    JLabel WrongLabel2;
-    JLabel WrongLabel3;
+    // Question 3
+    /** JLabel to display Question 3 on quiz panel 3 */
+    public JLabel Q3Label;
+    /** JLabel for Question 3 first answer on quiz panel 3 */
+    public JLabel Q3ALabel;
+    /** JLabel for Question 3 second answer on quiz panel 3 */
+    public JLabel Q3BLabel;
+    /** JLabel for Question 3 third answer on quiz panel 3 */
+    public JLabel Q3CLabel;
+    /** JRadioButton for Question 3 first answer on quiz panel 3 */
+    public JRadioButton Q3AButton;
+    /** JRadioButton for Question 3 second answer on quiz panel 3 */
+    public JRadioButton Q3BButton;
+    /** JRadioButton for Question 3 third answer on quiz panel 3 */
+    public JRadioButton Q3CButton;
+    /** Button Group for the 3 radiobuttons for question 3 on quiz panel 3 */
+    public ButtonGroup Q3Group;
 
-    /** ActionListner method for all buttons, textfields and the timer */
+    // Next Buttons
+    /** JButton to go to question 2 after answer question 1 */
+    public JButton Next2Button;
+    /** JButton to go to question 3 after answer question 1 */
+    public JButton Next3Button;
+    /** JButton to indicate that the user selected the correct answer for question 1 */
+    
+    // Correct Labels
+    public JLabel CorrectLabel;
+    /** JButton to indicate that the user selected the correct answer for question 2 */
+    public JLabel CorrectLabel2;
+    /** JButton to indicate that the user selected the correct answer for question 3 */
+    public JLabel CorrectLabel3;
+    
+    // Wrong Labels
+    /** JButton to indicate that the user selected the wrong answer for question 1 */
+    public JLabel WrongLabel1;
+    /** JButton to indicate that the user selected the wrong answer for question 2 */
+    public JLabel WrongLabel2;
+    /** JButton to indicate that the user selected the wrong answer for question 3 */
+    public JLabel WrongLabel3;
+
+    // Methods
+    /** ActionListener method for all buttons, textfields and the timer */
     public void actionPerformed(ActionEvent evt){
-		if(evt.getSource() == hvalue){
+		// TextField for h
+        if(evt.getSource() == hvalue){
 			try{
 				intH = Integer.parseInt(hvalue.getText());
 				hslider.setValue(intH);
@@ -97,6 +182,7 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
 			}
 		}
 		
+        // TextField for k
 		if(evt.getSource() == kvalue){
 			try{
 				intK = Integer.parseInt(kvalue.getText());
@@ -107,6 +193,7 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
 			}
 		}
 
+        // Timer
         if(evt.getSource() == thetimer){
 			if(thepanel.intX < thepanel.intLimitX){
 				thepanel.intX = thepanel.intX + thepanel.intDeltaX;
@@ -122,6 +209,7 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
         }
 
         // Quiz Panel buttons
+        // Question 1
         if(evt.getSource() == Q1AButton){
             CorrectLabel.setVisible(false);
             WrongLabel1.setVisible(true);
@@ -142,7 +230,8 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
             theframe.pack();
 			theframe.repaint();
         }
-          
+        
+        // Question 2
         if(evt.getSource() == Q2AButton){
             CorrectLabel2.setVisible(false);
             WrongLabel2.setVisible(true);
@@ -164,6 +253,7 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
 			theframe.repaint();
         }
 
+        // Question 3
         if(evt.getSource() == Q3AButton){
             // Correct
             WrongLabel3.setVisible(false);
@@ -180,7 +270,8 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
 
     /** ChangeListener method for h and k sliders */
 	public void stateChanged(ChangeEvent evt){
-		if(evt.getSource() == hslider){
+		// Slider for h
+        if(evt.getSource() == hslider){
 			hvalue.setText(hslider.getValue()+"");
 			intH = hslider.getValue();
             thepanel.intH = this.intH;
@@ -192,6 +283,7 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
             }
 		}
 		
+        // Slider for k
 		if(evt.getSource() == kslider){
 			kvalue.setText(kslider.getValue()+"");
             intK = kslider.getValue();
@@ -242,6 +334,7 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
         thepanel.setPreferredSize(new Dimension(960,540));
 		thepanel.setLayout(null);
 		
+        // Menus
 		themenubar.add(mainmenu);
         themenubar.add(quizmenu);
 		themenubar.add(helpmenu);
@@ -253,6 +346,7 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
 		quizmenu.addMenuListener(this);
 		aboutmenu.addMenuListener(this);
 
+        // Interactive Labels, Sliders, and TextFields for main panel
         formulalabel = new JLabel("<html> f(x) = a(x - h)<sup>2</sup> + k </html>");
         formulalabel.setFont(new Font("Calibri", Font.PLAIN, 24));
         formulalabel.setSize(200,100);
@@ -334,6 +428,7 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
 		thepanel.add(ktrans);
 
         // Quiz Panel
+        // Set panel size
         quiz1panel.setPreferredSize(new Dimension(960,540));
 		quiz1panel.setLayout(null);
 		
@@ -343,6 +438,7 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
         quiz3panel.setPreferredSize(new Dimension(960,540));
 		quiz3panel.setLayout(null);
 
+        // Question 1 JComponents
         Q1Label = new JLabel("1. What does the 'k' value represents in the vertex form equation?");
         Q1Label.setSize(800,20);
         Q1Label.setLocation(5,5);
@@ -363,6 +459,7 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
         Q1CLabel.setLocation(25,65);
         quiz1panel.add(Q1CLabel);
 
+        // Question 2 JComponents
         Q2Label = new JLabel("<html> 2. Which of the following statements is true about the equation: f(x) = (x - 3)<sup>2</sup> - 8 </html>");
         Q2Label.setSize(800,20);
         Q2Label.setLocation(5,5);
@@ -383,6 +480,7 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
         Q2CLabel.setLocation(25,65);
         quiz2panel.add(Q2CLabel);
 
+        // Question 3 JComponents
         Q3Label = new JLabel("3. Select the correct equation for the following descriptions: vertical translation 9 units up, horizontal translation 1 unit left");
         Q3Label.setSize(900,20);
         Q3Label.setLocation(5,5);
@@ -404,6 +502,7 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
         quiz3panel.add(Q3CLabel);
 
         // Answer Buttons
+        // Question 1
         Q1AButton = new JRadioButton();
         Q1AButton.setSize(20,20);
         Q1AButton.setLocation(5,25);
@@ -427,6 +526,7 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
         Q1Group.add(Q1BButton);
         Q1Group.add(Q1CButton);
 
+        // Question 2
         Q2AButton = new JRadioButton();
         Q2AButton.setSize(20,20);
         Q2AButton.setLocation(5,25);
@@ -450,6 +550,7 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
         Q2Group.add(Q2BButton);
         Q2Group.add(Q2CButton);
 
+        // Question 3
         Q3AButton = new JRadioButton();
         Q3AButton.setSize(20,20);
         Q3AButton.setLocation(5,30);
@@ -545,6 +646,7 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
     }   
 
     // Main Program
+    /** main method */
     public static void main(String[] args){
         new quadratic();
     }

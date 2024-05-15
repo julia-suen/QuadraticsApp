@@ -6,21 +6,35 @@ import javax.swing.*;
 
 public class AnimationPanel extends JPanel {
     // Properties
-    BufferedImage imgGrid;
-    BufferedImage imgCurve;
-    BufferedImage imgMathIcon;
-    ImageIcon imgIcon;
+
+	/** Create a BufferedImage object to store the Grid image */
+    public BufferedImage imgGrid;
+	/** Create a BufferedImage object to store the Graph image */
+    public BufferedImage imgCurve;
+	/** Create a BufferedImage object to store the image for the app icon*/
+    public BufferedImage imgMathIcon;
+	/** Create a ImageIcon object to paint the app icon image */
+    public ImageIcon imgIcon;
+	/** H value obtained from slider in main program panel */
     public int intH;
+	/** K value obtained from slider in main program panel */
     public int intK;
-    int intX = 0;
-    int intY = -231;
-    int intDeltaX = 1;
-    int intDeltaY = 1;
-    int intLimitX;
-    int intLimitY;
+	/** X coordinates of the Quadratic Graph currently */
+    public int intX = 0;
+	/** Y coordinates of the Quadratic Graph currently */
+    public int intY = -231;
+	/** graph translates 1 pixel horizontally per frame when moving */
+    public int intDeltaX = 1;
+	/** graph translates 1 pixel vertically per frame when moving */
+    public int intDeltaY = 1;
+	/** Controls how far the graph can move horizontally depending on the H value */
+    public int intLimitX;
+	/** Controls how far the graph can move vertically depending on the K value */
+    public int intLimitY;
     
 
     // Methods
+	/** Controls how the graph moves depending on the H and K value inputs from main panel */
     public void paintComponent(Graphics g){
         super.paintComponent(g);
 
@@ -161,7 +175,8 @@ public class AnimationPanel extends JPanel {
         g.drawLine(540,0,540,540);
     }
 
-    // Constructor  
+    // Constructor
+	/** Load Images into the respective variables */
     public AnimationPanel(){
         super();
         try{

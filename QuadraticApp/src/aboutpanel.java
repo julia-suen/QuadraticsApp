@@ -6,9 +6,11 @@ import javax.swing.*;
 
 public class aboutpanel extends JPanel{
 	// Properties
-	BufferedImage imgAbout;
+	/** Create a BufferedImage object to store the About Us page */
+	public BufferedImage imgAbout;
 	
 	// Methods
+	/** Paints the About Us page to the screen when triggered */
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		
@@ -16,6 +18,7 @@ public class aboutpanel extends JPanel{
 	}
 	
 	// Constructor
+	/** Loads About Us page to the BufferedImage object */
 	public aboutpanel(){
 		super();
 		try{
