@@ -4,6 +4,7 @@ import java.io.*;
 import javax.imageio.*;
 import javax.swing.*;
 
+/** Create an extension of JPanel for About Us Page */
 public class aboutpanel extends JPanel{
 	// Properties
 	/** Create a BufferedImage object to store the About Us page */

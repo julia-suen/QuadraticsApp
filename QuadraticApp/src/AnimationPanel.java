@@ -4,6 +4,7 @@ import java.io.*;
 import javax.imageio.*;
 import javax.swing.*;
 
+/** Create an extension of JPanel which performs the animation of the graph translating */
 public class AnimationPanel extends JPanel {
     // Properties
 
@@ -39,67 +40,67 @@ public class AnimationPanel extends JPanel {
         super.paintComponent(g);
 
         // Variables for Graph translation
-        if(intH == -10){
+        if(intH == 10){
 			intLimitX = 231;
 		}
-		if(intH == -9){
+		if(intH == 9){
 			intLimitX = 209;
 		}
-		if(intH == -8){
+		if(intH == 8){
 			intLimitX = 186;
 		}
-		if(intH == -7){
+		if(intH == 7){
 			intLimitX = 163;
 		}
-		if(intH == -6){
+		if(intH == 6){
 			intLimitX = 140;
 		}
-		if(intH == -5){
+		if(intH == 5){
 			intLimitX = 116;
 		}
-		if(intH == -4){
+		if(intH == 4){
 			intLimitX = 94;
 		}
-		if(intH == -3){
+		if(intH == 3){
 			intLimitX = 71;
 		}
-		if(intH == -2){
+		if(intH == 2){
 			intLimitX = 47;
 		}
-		if(intH == -1){
+		if(intH == 1){
 			intLimitX = 24;
 		}
 		if(intH == 0){
 			intLimitX = 0;
 		}
-		if(intH == 1){
+		if(intH == -1){
 			intLimitX = -22;
 		}
-        if(intH == 2){
+        if(intH == -2){
 			intLimitX = -45;
 		}
-        if(intH == 3){
+        if(intH == -3){
 			intLimitX = -69;
 		}
-        if(intH == 4){
+        if(intH == -4){
 			intLimitX = -92;
 		}
-        if(intH == 5){
+        if(intH == -5){
 			intLimitX = -114;
 		}
-        if(intH == 6){
+        if(intH == -6){
 			intLimitX = -138;
 		}
-        if(intH == 7){
+        if(intH == -7){
 			intLimitX = -161;
 		}
-        if(intH == 8){
+        if(intH == -8){
 			intLimitX = -184;
 		}
-        if(intH == 9){
+        if(intH == -9){
 			intLimitX = -207;
 		}
-        if(intH == 10){
+        if(intH == -10){
 			intLimitX = -229;
 		}
 		if(intK == 10){

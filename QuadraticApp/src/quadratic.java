@@ -19,10 +19,10 @@ import javax.swing.event.*;
 
 // zip the folder that contains source file, images, jar file, javadocs to submit
 
+/** Create the class quadratic and implement the ActionListener, ChangeListener, and MenuListener interface */
 public class quadratic implements ActionListener, ChangeListener, MenuListener{
     // Properties
     /** Main Panel JComponents */
-    
     // Frame and Panels
     /** Main Frame */
     public JFrame theframe = new JFrame("Quadratic in Vertex Form");
@@ -38,9 +38,9 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
     public helppanel help = new helppanel();
     /** about panel loads the image for about screen that acknowledges the programmers */
     public aboutpanel about = new aboutpanel();
-    /** timer for animation panel */
     
     // Timer
+    /** timer for animation panel */
     public Timer thetimer = new Timer(1000/48, this);
 
     // Menus
@@ -329,6 +329,7 @@ public class quadratic implements ActionListener, ChangeListener, MenuListener{
 	}
 
     // Constructor
+    /** Paints Main Panel and readies other panels to be painted when menu is switched */
     public quadratic(){
         // Main Panel
         thepanel.setPreferredSize(new Dimension(960,540));
